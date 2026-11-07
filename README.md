@@ -20,6 +20,7 @@ Here are some screenshots of the Call Blocker App in action:
 - **Whitelist Management**: Maintain a whitelist of phone numbers that are always allowed to reach you.
 - **Advanced Blocking Options**: Multiple blocking criteria available:
   - Block calls from hidden numbers
+  - Block calls from unknown numbers (unknown/unavailable presentation, or placeholder numbers such as "Unknown", "不明" or "-1")
   - Block calls from numbers not in contacts
   - Block international calls
 

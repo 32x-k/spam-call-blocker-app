@@ -28,6 +28,7 @@
     <string name="call_rejected">Rejected call</string>
     <string name="call_blocked">Blocked call</string>
     <string name="call_unknown">Unknown</string>
+    <string name="call_private">Private number</string>
 
     <!-- Preferences -->
     <string name="action_settings">Settings</string>
@@ -116,6 +117,9 @@
     <string name="pref_block_hidden_numbers_title">Block Hidden Numbers</string>
     <string name="pref_block_hidden_numbers_summary">Block calls from hidden or private numbers</string>
 
+    <string name="pref_block_unknown_numbers_title">Block Unknown Numbers</string>
+    <string name="pref_block_unknown_numbers_summary">Block calls whose number cannot be identified: reported as unknown, unavailable or out of area by the carrier, or delivered as a placeholder such as &quot;Unknown&quot;, &quot;-1&quot; or &quot;-2&quot;</string>
+
     <string name="pref_block_international_numbers_title">Block International Calls</string>
     <string name="pref_block_international_numbers_summary">Block calls from other countries</string>
 
@@ -149,6 +153,7 @@
     <string name="blocking_disabled">Call blocking is disabled in settings</string>
     <string name="block_stir_shaken_risk">STIR/SHAKEN - likely spoofed call</string>
     <string name="block_hidden_number">Hidden number</string>
+    <string name="block_unknown_number">Unknown number</string>
     <string name="block_spam_number">Reported as spam</string>
     <string name="block_international_call">International call</string>
     <string name="block_pattern_match">Pattern match</string>

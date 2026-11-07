@@ -160,6 +160,13 @@
             app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_block_unknown_numbers"
+            android:summary="@string/pref_block_unknown_numbers_summary"
+            android:title="@string/pref_block_unknown_numbers_title"
+            app:iconSpaceReserved="false" />
+
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_block_international_numbers"
             android:summary="@string/pref_block_international_numbers_summary"

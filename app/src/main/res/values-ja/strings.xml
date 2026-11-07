@@ -29,6 +29,7 @@
     <string name="call_rejected">着信拒否</string>
     <string name="call_blocked">着信をブロック済み</string>
     <string name="call_unknown">不明</string>
+    <string name="call_private">非通知</string>
 
     <!-- Preferences -->
     <string name="action_settings">設定</string>
@@ -117,6 +118,9 @@
     <string name="pref_block_hidden_numbers_title">非表示の番号をブロックする</string>
     <string name="pref_block_hidden_numbers_summary">非通知またはプライベート番号からの着信をブロックします</string>
 
+    <string name="pref_block_unknown_numbers_title">不明な番号をブロックする</string>
+    <string name="pref_block_unknown_numbers_summary">番号が特定できない着信をブロックします。キャリアが「不明」「表示圏外」と通知する着信や、「Unknown」「-1」「-2」などのダミーの値で届く着信が対象です。</string>
+
     <string name="pref_block_international_numbers_title">国際電話をブロックする</string>
     <string name="pref_block_international_numbers_summary">他国からの着信をブロックします</string>
 
@@ -150,6 +154,7 @@
     <string name="blocking_disabled">設定で着信のブロックが無効化されています</string>
     <string name="block_stir_shaken_risk">STIR/SHAKEN - なりすましの可能性がある着信</string>
     <string name="block_hidden_number">電話番号が非表示</string>
+    <string name="block_unknown_number">不明な電話番号（表示圏外）</string>
     <string name="block_spam_number">迷惑電話として報告</string>
     <string name="block_international_call">国際電話</string>
     <string name="block_pattern_match">パターン一致</string>

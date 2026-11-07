@@ -42,6 +42,9 @@ fun isBlockingEnabled(context: Context): Boolean =
 fun shouldBlockHiddenNumbers(context: Context): Boolean =
     getBooleanPref(context, "pref_block_hidden_numbers", true)
 
+fun shouldBlockUnknownNumbers(context: Context): Boolean =
+    getBooleanPref(context, "pref_block_unknown_numbers", true)
+
 fun shouldBlockInternationalNumbers(context: Context): Boolean =
     getBooleanPref(context, "pref_block_international_numbers", false)
 

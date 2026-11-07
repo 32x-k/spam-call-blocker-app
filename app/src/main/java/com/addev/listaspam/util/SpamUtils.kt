@@ -68,8 +68,11 @@ class SpamUtils {
     /**
      * Checks if a given phone number is spam by checking local blocklist and online databases.
      *
+     * Numbers that are withheld or that the carrier/device could not deliver are not looked up:
+     * they are blocked according to the "hidden numbers" and "unknown numbers" settings.
+     *
      * @param context The application context.
-     * @param phoneNumber The phone number to check.
+     * @param phoneNumber The phone number to check (used when [details] is null).
      * @param details Call details
      * @param callback A function to be called with the result (true if spam, false otherwise).
      */
@@ -86,23 +89,49 @@ class SpamUtils {
                 return@launch
             }
 
-            val number = if (details != null) getRawPhoneNumber(details) else phoneNumber
+            val rawNumber = if (details != null) getRawPhoneNumber(details) else phoneNumber
             val region = CountryLanguageUtils.getSimCountry(context).uppercase()
 
-            if (number.isNullOrBlank()) {
-                if (shouldBlockHiddenNumbers(context)) {
-                    handleSpamNumber(
-                        context,
-                        "",
-                        false,
-                        context.getString(R.string.block_hidden_number),
-                        callback
-                    )
-                    return@launch
-                } else {
-                    callback(false)
+            // Calls without a dialable number are told apart from real ones here: a withheld
+            // number (private / non-notification) is not the same thing as a call the network
+            // could not identify, and each has its own setting.
+            val number = when (
+                CallerIdentity.classify(
+                    rawNumber,
+                    details?.handlePresentation ?: TelecomManager.PRESENTATION_ALLOWED
+                )
+            ) {
+                CallerKind.RESTRICTED -> {
+                    if (shouldBlockHiddenNumbers(context)) {
+                        handleSpamNumber(
+                            context,
+                            context.getString(R.string.call_private),
+                            false,
+                            context.getString(R.string.block_hidden_number),
+                            callback
+                        )
+                    } else {
+                        callback(false)
+                    }
                     return@launch
                 }
+
+                CallerKind.UNKNOWN -> {
+                    if (shouldBlockUnknownNumbers(context)) {
+                        handleSpamNumber(
+                            context,
+                            context.getString(R.string.call_unknown),
+                            false,
+                            context.getString(R.string.block_unknown_number),
+                            callback
+                        )
+                    } else {
+                        callback(false)
+                    }
+                    return@launch
+                }
+
+                CallerKind.NUMBER -> rawNumber.orEmpty()
             }
 
             // Check whitelist first - if whitelisted, always allow
